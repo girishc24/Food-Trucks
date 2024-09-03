@@ -64,6 +64,8 @@ http://127.0.0.1:8000/nearest-food-trucks-location/?latitude=37.7749&longitude=-
 ```
 The API will return a JSON response with the five nearest food trucks.
 
+![alt text](image.png)
+
 ### Explanation
 Distance Calculation: The distance between the user's location and each food truck is calculated using the Haversine formula, which is suitable for calculating great-circle distances between two points on a sphere given their longitudes and latitudes.
 
