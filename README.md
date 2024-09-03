@@ -18,7 +18,7 @@ First, you need to clone the repository to your local machine. You can do this u
 
 ```bash
 git clone https://github.com/girishc24/Food-Trucks.git
-cd social-networking-application
+cd Food-Trucks
 ```
 ### 2. Create a virtual environment
 
@@ -51,4 +51,30 @@ Start the Django development server to test the application locally:
 ```
 python manage.py runserver
 ```
-You can now access the application at http://localhost:8000.
+Access the Application: Open your web browser and go to http://127.0.0.1:8000/.
+
+Find Nearest Food Trucks: Use the following endpoint to find the nearest food trucks by providing latitude and longitude as query parameters:
+
+```
+GET /nearest-food-trucks-location/?latitude=<lat>&longitude=<lon>
+```
+Example :
+```
+http://127.0.0.1:8000/nearest-food-trucks-location/?latitude=37.7749&longitude=-122.4194
+```
+The API will return a JSON response with the five nearest food trucks.
+
+### Explanation
+Distance Calculation: The distance between the user's location and each food truck is calculated using the Haversine formula, which is suitable for calculating great-circle distances between two points on a sphere given their longitudes and latitudes.
+
+Sorting: After calculating the distances, the food trucks are sorted by proximity to the user's input coordinates, and the top 5 closest trucks are returned.
+
+
+### Code Structure
+
+views.py: Contains the logic for handling the request and calculating the nearest food trucks.
+
+models.py: Defines the FoodTruck model, which stores information about each food truck.
+
+serializers.py: Serializes the FoodTruck objects for the API response.
+
